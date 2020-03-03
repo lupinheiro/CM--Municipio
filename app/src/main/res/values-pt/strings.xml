@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">+Município</string>
+    <string name="action_settings">Preferencias</string>
+    <string name="activity_title_home">+Município</string>
+    <string name="hint_enter_note">Introduza a sua Nota!</string>
+    <string name="lbl_edit_note_title">Editar Nota</string>
+    <string name="lbl_new_note_title">Nova Nota</string>
+    <string name="msg_no_notes">sem notas</string>
+</resources>

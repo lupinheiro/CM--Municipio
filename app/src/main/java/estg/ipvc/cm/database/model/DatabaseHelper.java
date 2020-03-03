@@ -13,10 +13,10 @@ import estg.ipvc.cm.database.model.Note;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    // Database Version
+    // Versão da Base de Dados
     private static final int DATABASE_VERSION = 1;
 
-    // Database Name
+    // Nome da Base de Dados
     private static final String DATABASE_NAME = "notes_db";
 
 
@@ -24,11 +24,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    // Creating Tables
+    // Cria tabelas
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        // create notes table
+        // cria tabela notas
         db.execSQL(Note.CREATE_TABLE);
     }
 
@@ -38,31 +38,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + Note.TABLE_NAME);
 
-        // Create tables again
+        // Cria tabelas
         onCreate(db);
     }
 
     public long insertNote(String note) {
-        // get writable database as we want to write data
+        // encontra uma writable database
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        // `id` and `timestamp` will be inserted automatically.
-        // no need to add them
+        // `id` and `timestamp` vao ser inseridos automaticamente
+        // nao há necessidade de os inserir
         values.put(Note.COLUMN_NOTE, note);
 
-        // insert row
+        // insere fila
         long id = db.insert(Note.TABLE_NAME, null, values);
 
-        // close db connection
+        // fecha ligação BD
         db.close();
 
-        // return newly inserted row id
+        // retona id recentemente introduzido
         return id;
     }
 
     public Note getNote(long id) {
-        // get readable database as we are not inserting anything
+        // retorna a nota
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(Note.TABLE_NAME,
@@ -73,13 +73,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
 
-        // prepare note object
+        // prepara note object
         Note note = new Note(
                 cursor.getInt(cursor.getColumnIndex(Note.COLUMN_ID)),
                 cursor.getString(cursor.getColumnIndex(Note.COLUMN_NOTE)),
                 cursor.getString(cursor.getColumnIndex(Note.COLUMN_TIMESTAMP)));
 
-        // close the db connection
+        // fechar a ligação à BD
         cursor.close();
 
         return note;
@@ -88,14 +88,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public List<Note> getAllNotes() {
         List<Note> notes = new ArrayList<>();
 
-        // Select All Query
+        // Selecionar Tudo (Query)
         String selectQuery = "SELECT  * FROM " + Note.TABLE_NAME + " ORDER BY " +
                 Note.COLUMN_TIMESTAMP + " DESC";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-        // looping through all rows and adding to list
+        // looping e adicionar à lista
         if (cursor.moveToFirst()) {
             do {
                 Note note = new Note();
@@ -107,10 +107,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
 
-        // close db connection
+        // fecha ligação BD
         db.close();
 
-        // return notes list
+        // return lista notas
         return notes;
     }
 
@@ -133,7 +133,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(Note.COLUMN_NOTE, note.getNote());
 
-        // updating row
+        // atualiza fila
         return db.update(Note.TABLE_NAME, values, Note.COLUMN_ID + " = ?",
                 new String[]{String.valueOf(note.getId())});
     }

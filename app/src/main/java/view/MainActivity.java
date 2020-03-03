@@ -68,9 +68,9 @@ public class MainActivity extends AppCompatActivity {
         toggleEmptyNotes();
 
         /**
-         * On long press on RecyclerView item, open alert dialog
-         * with options to choose
-         * Edit and Delete
+         * Ao fazer long-press abre o menu
+         * Com as seguintes opções
+         * Edit e Delete
          * */
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(this,
                 recyclerView, new RecyclerTouchListener.ClickListener() {
@@ -86,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Inserting new note in db
-     * and refreshing the list
+     * Inserir nova nota na BD
+     * e atualizar a lista
      */
     private void createNote(String note) {
         // inserting note in db and getting
@@ -109,8 +109,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Updating note in db and updating
-     * item in the list by its position
+     * Update da nota na BD e do
+     * item na posição na lista
      */
     private void updateNote(String note, int position) {
         Note n = notesList.get(position);
@@ -128,14 +128,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Deleting note from SQLite and removing the
-     * item from the list by its position
+     * Apagar a nota do SQLite
+     * Remover da Lista
      */
     private void deleteNote(int position) {
-        // deleting the note from db
+        // apagar da BD
         db.deleteNote(notesList.get(position));
 
-        // removing the note from the list
+        // remover da lista
         notesList.remove(position);
         mAdapter.notifyItemRemoved(position);
 
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Opens dialog with Edit - Delete options
+     * Abrir as opções Edit e Delete
      * Edit - 0
      * Delete - 0
      */
@@ -166,10 +166,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Shows alert dialog with EditText options to enter / edit
-     * a note.
-     * when shouldUpdate=true, it automatically displays old note and changes the
-     * button text to UPDATE
+     * Mostra alert dialog com edittext para editar/ introduzir a nota.
+     * Quando shouldUpdate=true, apresenta a nota antiga e muda o texto
+     * do botão para update
      */
     private void showNoteDialog(final boolean shouldUpdate, final Note note, final int position) {
         LayoutInflater layoutInflaterAndroid = LayoutInflater.from(getApplicationContext());
@@ -205,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
         alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Show toast message when no text is entered
+                // Apresenta Toast que a caixa está vazia
                 if (TextUtils.isEmpty(inputNote.getText().toString())) {
                     Toast.makeText(MainActivity.this, "Enter note!", Toast.LENGTH_SHORT).show();
                     return;
@@ -213,12 +212,12 @@ public class MainActivity extends AppCompatActivity {
                     alertDialog.dismiss();
                 }
 
-                // check if user updating note
+                // Confirma que o utilizador está a fazer update
                 if (shouldUpdate && note != null) {
-                    // update note by it's id
+                    // atualiza a nota pelo id
                     updateNote(inputNote.getText().toString(), position);
                 } else {
-                    // create new note
+                    // cria nova nota
                     createNote(inputNote.getText().toString());
                 }
             }
@@ -226,10 +225,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Toggling list and empty notes view
+     * Ver/iniciar a lista vazia
      */
     private void toggleEmptyNotes() {
-        // you can check notesList.size() > 0
+        // confirma que notesList.size() > 0
 
         if (db.getNotesCount() > 0) {
             noNotesView.setVisibility(View.GONE);

@@ -26,7 +26,7 @@ import estg.ipvc.cm.database.model.Note;
 import utils.MyDividerItemDecoration;
 import utils.RecyclerTouchListener;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity_notes extends AppCompatActivity {
     private NotesAdapter mAdapter;
     private List<Note> notesList = new ArrayList<>();
     private CoordinatorLayout coordinatorLayout;
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.notes_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
         LayoutInflater layoutInflaterAndroid = LayoutInflater.from(getApplicationContext());
         View view = layoutInflaterAndroid.inflate(R.layout.note_dialog, null);
 
-        AlertDialog.Builder alertDialogBuilderUserInput = new AlertDialog.Builder(MainActivity.this);
+        AlertDialog.Builder alertDialogBuilderUserInput = new AlertDialog.Builder(MainActivity_notes.this);
         alertDialogBuilderUserInput.setView(view);
 
         final EditText inputNote = view.findViewById(R.id.note);
@@ -206,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Apresenta Toast que a caixa está vazia
                 if (TextUtils.isEmpty(inputNote.getText().toString())) {
-                    Toast.makeText(MainActivity.this, "Enter note!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity_notes.this, "Enter note!", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
                     alertDialog.dismiss();

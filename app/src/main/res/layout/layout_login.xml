@@ -23,15 +23,15 @@
             android:layout_marginTop="@dimen/loginViewsMargin"/>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputEmail"
+            android:id="@+id/textInputUsername"
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin">
             <EditText
-                android:id="@+id/editTextEmail"
+                android:id="@+id/editTextUsername"
                 style="@style/modifiedEditText"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
-                android:hint="@string/login_email_hint"/>
+                android:hint="username"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout

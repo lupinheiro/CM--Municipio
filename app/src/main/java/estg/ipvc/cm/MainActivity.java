@@ -1,4 +1,4 @@
-package view;
+package estg.ipvc.cm;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -20,11 +20,10 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import estg.ipvc.cm.R;
 import estg.ipvc.cm.database.model.DatabaseHelper;
 import estg.ipvc.cm.database.model.Note;
-import utils.MyDividerItemDecoration;
-import utils.RecyclerTouchListener;
+import estg.ipvc.cm.utils.MyDividerItemDecoration;
+import estg.ipvc.cm.utils.RecyclerTouchListener;
 
 public class MainActivity extends AppCompatActivity {
     private NotesAdapter mAdapter;

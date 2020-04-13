@@ -1,4 +1,4 @@
-package utils;
+package estg.ipvc.cm.utils;
 
 import android.content.Context;
 import com.android.volley.Request;

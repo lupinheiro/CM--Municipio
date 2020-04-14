@@ -7,4 +7,11 @@
     <string name="lbl_edit_note_title">Editar Nota</string>
     <string name="lbl_new_note_title">Nova Nota</string>
     <string name="msg_no_notes">sem notas</string>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+    <string name="login_signup_hint">Não tem conta? Registe aqui!</string>
+    <string name="register">Registar</string>
+    <string name="signup_login_hint">Já tem conta? Faça Login Aqui!</string>
+    <string name="forgotPassword">Esqueceu-se da password?</string>
+    <string name="Notes">Notas</string>
 </resources>
